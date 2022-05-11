@@ -6,12 +6,19 @@ namespace TestProgram
     public class Tests
     {
         [Test]
-        public void Test1()
+        public void Mood_Anayse_Sad()
         {
-            MoodAnalyzer problem = new MoodAnalyzer();
-            var result = problem.MoodAnalys("I am in Happy Mood");
-            Assert.AreEqual(result, "Happy");
+            MoodAnalyzer problem = new MoodAnalyzer("I am in Sad Mood");
+            var Val = problem.MoodAnalys();
+            Assert.AreEqual(Val, "Sad");
 
+        }
+        [Test]
+        public void Mood_Analyse_Happy()
+        {
+            MoodAnalyzer problem = new MoodAnalyzer("I am in Happy Mood");
+            var Val = problem.MoodAnalys();
+            Assert.AreEqual(Val, "Happy");
         }
     }
 }
