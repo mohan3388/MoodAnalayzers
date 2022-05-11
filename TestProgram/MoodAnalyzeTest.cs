@@ -20,5 +20,12 @@ namespace TestProgram
             var Val = problem.MoodAnalys();
             Assert.AreEqual(Val, "Happy");
         }
+        [Test]
+        public void Mood_Analyse_Exception()
+        {
+            MoodAnalyzer problem = new MoodAnalyzer("I am in Happy Mood");
+            var Val = problem.MoodAnalys();
+            Assert.AreEqual(Val, "Happy");
+        }
     }
 }

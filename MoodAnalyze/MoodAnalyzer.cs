@@ -13,7 +13,21 @@
             {
                 return "Sad";
             }
-            else
+           
+                return "Happy";
+            }
+            public string AnalyseExceptionMethod()
+            {
+            try
+            {
+                if (message.ToLower().Contains("null"))
+                {
+                    return "sad";
+                }
+               
+                    return "Happy";
+                }
+                    catch (Exception ex)
             {
                 return "Happy";
             }
