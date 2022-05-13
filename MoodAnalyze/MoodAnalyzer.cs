@@ -7,30 +7,32 @@
         {
             this.message = message;
         }
-        public string MoodAnalys()
+
+        public string AnalyseExceptionMethod()
         {
-            if(message.ToLower().Contains("sad"))
-            {
-                return "Sad";
-            }
-           
-                return "Happy";
-            }
-            public string AnalyseExceptionMethod()
-            {
             try
             {
-                if (message.ToLower().Contains("null"))
+                if(message == null)
+                {
+                    throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NULL_MOOD,"message is null");
+                }
+                if(message.Equals(" "))
+                {
+                    throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.EMPTY_MOOD, "message is empty");
+                }
+                if(message.ToLower().Contains("Happy"))
+                {
+                    return "Happy";
+                }
+                else
                 {
                     return "sad";
                 }
-               
-                    return "Happy";
-                }
-                    catch (Exception ex)
-            {
-                return "Happy";
             }
-        }
+            catch(Exception ex)
+            {
+                throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.EMPTY_MOOD, "Message is empty");
+            }
+    }
     }
 }
