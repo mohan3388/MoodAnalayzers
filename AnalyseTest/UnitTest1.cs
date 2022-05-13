@@ -14,16 +14,28 @@ namespace AnalyseTest
         [TestMethod]
         [DataRow("", "message is empty")]
         [DataRow(null, "message is null")]
-        public void Mood_Analyze_Problem(string input, string expected)
+        public void MoodAnalysis_return_null(string input, string expected)
         {
             try
             {
-                var result = moodAnalyzer.AnalyseExceptionMethod();
+                var result = moodAnalyzer.AnalyzeMood();
             }
             catch (MoodAnalyzerException ex)
             {
                 Assert.AreEqual(ex.Message, "message is null");
             }
+        }
+        public void MoodAnalysis_return_empty(string input, string expected)
+        {
+            try
+            {
+                var result = moodAnalyzer.AnalyzeMood();
+            }
+            catch (MoodAnalyzerException ex)
+            {
+                Assert.AreEqual(ex.Message, "message is empty");
+            }
+
         }
     }
 }

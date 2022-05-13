@@ -7,25 +7,32 @@
         {
             this.message = message;
         }
-
-        public string AnalyseExceptionMethod()
+        public string AnalyzeMood()
         {
             try
             {
-          
-                if(message.ToLower().Contains("Happy"))
+                if (message == null)
+                {
+                    throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NULL_MOOD, "message is null");
+                }
+                if (message.Equals(" "))
+                {
+                    throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.EMPTY_MOOD, "message is empty");
+                }
+                if (message.ToLower().Contains("happy"))
                 {
                     return "Happy";
                 }
                 else
                 {
-                    return "sad";
+                    return "Sad";
                 }
             }
-            catch(Exception)
+            catch (Exception)
             {
-                throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.EMPTY_MOOD, "Message is empty");
+                throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.EMPTY_MOOD, "message is empty");
             }
-    }
+
+        }
     }
 }
