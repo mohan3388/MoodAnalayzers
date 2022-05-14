@@ -22,5 +22,12 @@ namespace ValidationTest
                 bool result = input.ValidLastName("Sahu");
                 Assert.IsTrue(result);
             }
+        [Test]
+        public void Valid_Email()
+        {
+            Validation input = new Validation();
+            bool result = input.ValidEmail("Mohan@123gmail.com");
+            Assert.IsTrue(result);
         }
+    }
     }

@@ -6,6 +6,7 @@ namespace AnalyseTest
     [TestClass]
     public class MoodAnalysisTest
     {
+
         private readonly MoodAnalyzer moodAnalyzer;
         public MoodAnalysisTest()
         {
@@ -14,22 +15,22 @@ namespace AnalyseTest
         [TestMethod]
         [DataRow("", "message is empty")]
         [DataRow(null, "message is null")]
-        public void MoodAnalysis_return_null(string input, string expected)
+        public void Mood_Analyse_return_Null(string input, string expected)
         {
             try
             {
-                var result = moodAnalyzer.AnalyzeMood();
+                var result = moodAnalyzer.MoodAnalyze();
             }
             catch (MoodAnalyzerException ex)
             {
                 Assert.AreEqual(ex.Message, "message is null");
             }
         }
-        public void MoodAnalysis_return_empty(string input, string expected)
+        public void Mood_Analyse_return_Empty(string input, string expected)
         {
             try
             {
-                var result = moodAnalyzer.AnalyzeMood();
+                var result = moodAnalyzer.MoodAnalyze();
             }
             catch (MoodAnalyzerException ex)
             {
