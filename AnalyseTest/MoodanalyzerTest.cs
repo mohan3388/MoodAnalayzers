@@ -26,6 +26,7 @@ namespace AnalyseTest
                 Assert.AreEqual(ex.Message, "message is null");
             }
         }
+        [TestMethod]
         public void Mood_Analyse_return_Empty(string input, string expected)
         {
             try
@@ -37,6 +38,13 @@ namespace AnalyseTest
                 Assert.AreEqual(ex.Message, "message is empty");
             }
 
+        }
+        [TestMethod]
+        public void Mood_Analysis_return_Obj()
+        {
+            object expected = new MoodAnalyzer();
+            object obj = MoodAnalyserFactory.CreateMoodAnalyse("MoodAnalyze.MoodAnalyzer", "MoodAnalyzer");
+            expected.Equals(obj);
         }
     }
 }
