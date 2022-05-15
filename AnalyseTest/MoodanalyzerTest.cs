@@ -39,6 +39,19 @@ namespace AnalyseTest
             }
 
         }
+        [TestMethod]
+        public void Mood_Analysis_return_Obj()
+        {
+            object expected = new MoodAnalyzer();
+            object obj = MoodAnalyserFactory.CreateMoodAnalyse("MoodAnalyze.MoodAnalyzer", "MoodAnalyzer");
+            expected.Equals(obj);
+        }
        
+        public void Mood_Analysis_return_Obj_use_Parameterized_Constructor()
+        {
+            object expected = new MoodAnalyzer("HAPPY");
+            object obj = MoodAnalyserFactory.ParameterizedConstructor("MoodAnalyze.MoodAnalyzer", "MoodAnalyzer", "HAPPY");
+            expected.Equals(obj);
+        }
     }
 }
