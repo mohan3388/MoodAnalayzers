@@ -20,11 +20,11 @@
                 {
                     throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.EMPTY_MOOD, "message is empty");
                 }
-                if (message==null)
+                if (message == null)
                 {
                     throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NULL_MOOD, "message is null");
                 }
-               
+
                 if (message.ToLower().Contains("happy"))
                 {
                     return "Happy";
@@ -34,7 +34,10 @@
                     return "Sad";
                 }
             }
-         
+            catch (MoodAnalyzerException)
+            {
+                throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NULL_MOOD, "message is null");
+            }
             catch (Exception)
             {
                 throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.EMPTY_MOOD, "message is empty");

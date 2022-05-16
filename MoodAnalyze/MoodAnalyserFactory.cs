@@ -32,15 +32,15 @@ namespace MoodAnalyze
                 throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NO_SUCH_METHOD, "constructor is not found");
             }
         }
-           public static object ParameterizedConstructor(string className, string constructorName, string message)
+        public static object ParameterizedConstructor(string className, string constructorName, string message)
         {
             Type type = typeof(MoodAnalyzer);
-            if(type.Name.Equals(className) || type.FullName.Equals(constructorName))
+            if (type.Name.Equals(className) || type.FullName.Equals(constructorName))
             {
-                if(type.Name.Equals(constructorName))
+                if (type.Name.Equals(constructorName))
                 {
                     ConstructorInfo constructor = type.GetConstructor(new[] { typeof(string) });
-                    object instance = constructor.Invoke(new object[] {message});
+                    object instance = constructor.Invoke(new object[] { message });
                     return instance;
                 }
                 else
@@ -51,6 +51,42 @@ namespace MoodAnalyze
             else
             {
                 throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NO_SUCH_METHOD, "class not found");
+            }
+        }
+        public static object CreateMoodAnalyseUsingParameterizedConstructor(string className, string constructorName, string message)
+        {
+            Type type = typeof(MoodAnalyzer);
+            if (type.Name.Equals(className) || type.FullName.Equals(className))
+            {
+                if (type.Name.Equals(constructorName))
+                {
+                    ConstructorInfo constructor = type.GetConstructor(new[] { typeof(string) });
+                    object instance = constructor.Invoke(new object[] { message });
+                    return instance;
+                }
+                else
+                {
+                    throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NO_SUCH_METHOD, "Class not Found");
+                }
+            }
+            else
+            {
+                throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NO_SUCH_CLASS, "Class not Found");
+            }
+        }
+        public static string InvokeAnalyzerMood(string message, string methodName)
+        {
+            try
+            {
+                Type type = Type.GetType("MoodAnalyzerProblems.MoodAnalyzer");
+                object moodAnalyzeObject = MoodAnalyserFactory.ParameterizedConstructor("MoodAnalyzerProblems.MoodAnalyzer", "MoodAnalyzer", message);
+                MethodInfo methodInfo = type.GetMethod(methodName);
+                object mood = methodInfo.Invoke(moodAnalyzeObject, null);
+                return mood.ToString();
+            }
+            catch (NullReferenceException)
+            {
+                throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NO_SUCH_CLASS, "Class not Found");
             }
         }
     }
