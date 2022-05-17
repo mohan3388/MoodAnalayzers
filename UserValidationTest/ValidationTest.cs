@@ -5,8 +5,6 @@ namespace UserValidationTest
 {
     public class Tests
     {
-        
-
         [Test]
         public void Valid_First_Name()
         {

@@ -53,7 +53,7 @@ namespace AnalyseTest
             object obj = MoodAnalyserFactory.ParameterizedConstructor("MoodAnalyze.MoodAnalyzer", "MoodAnalyzer", "HAPPY");
             expected.Equals(obj);
         }
-        [TestMethod]
+      
         public void GivenHappyMoodShouldReturnHappy()
         {
             string expected = "Happy";
