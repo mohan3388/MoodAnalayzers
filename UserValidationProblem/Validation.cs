@@ -5,12 +5,13 @@ namespace UserValidationProblem
     public class Validation
     {
         public const string Name_Pattern = "^[A-Z]{1}[A-Za-z]{3, }$";
-        public const string Email = "^[0-9a-zA-Z]+[.+-_]{0,1}[0-9a-zA-Z]+[@][a-zA-Z]+[.][a-zA-Z]{2,3}([.][a-zA-Z]{2,3}){0,1}";
+        public const string Email = "^[A-Z]{1}[0-9]{1}[!@#$%^&.]{1}[A-Za-z]{5, }$";
         public const string Mobile = "^[+]{1}[1-9]{2}[6-9]{1}[0-9]{9}$";
         public const string Password = "[A-Za-z]{8, }$";
         public const string Password_Include_One_Uppercase = "[A-Z]{1, }[A-Za-z]{8, }$";
         public const string Password_Include_One_Number = "[A-Z]{1, }[A-Za-z]{8, }[0-9]{1}$";
         public const string Password_Special_Char = "[A-Z]{1}[0-9]{1}[!@#$%^&.]{1}[A-Za-z]{5, }$";
+        public const string Email_Pattern = "^[0-9a-zA-Z]+[.+-_]{0,1}[0-9a-zA-Z]+[@][a-zA-Z]+[.][a-zA-Z]{2,3}([.][a-zA-Z]{2,3}){0,1}";
         public bool ValidFirstName(string name)
         {
             if (Regex.IsMatch(name, Name_Pattern)) ;
@@ -72,6 +73,14 @@ namespace UserValidationProblem
             if (Regex.IsMatch(password, Password_Special_Char)) ;
             {
                 Console.WriteLine("valid  password include special character" + password);
+                return true;
+            }
+        }
+        public bool ValidEmailAddress(string email)
+        {
+            if (Regex.IsMatch(email, Password_Special_Char)) ;
+            {
+                Console.WriteLine("valid Email Address" + email);
                 return true;
             }
         }
