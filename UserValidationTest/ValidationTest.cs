@@ -47,5 +47,19 @@ namespace UserValidationTest
             bool value = problem.ValidPassword_One_Uppercase("Mohansahu");
             Assert.IsTrue(value);
         }
+        [Test]
+        public void Valid_Password_include_one_Number()
+        {
+            Validation problem = new Validation();
+            bool value = problem.ValidPassword_One_Number("Mohansa7");
+            Assert.IsTrue(value);
+        }
+        [Test]
+        public void Valid_Password_Special_Char()
+        {
+            Validation problem = new Validation();
+            bool value = problem.ValidPassword_Special_Char("Mohans7@");
+            Assert.IsTrue(value);
+        }
     }
 }

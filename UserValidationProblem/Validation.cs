@@ -10,6 +10,7 @@ namespace UserValidationProblem
         public const string Password = "[A-Za-z]{8, }$";
         public const string Password_Include_One_Uppercase = "[A-Z]{1, }[A-Za-z]{8, }$";
         public const string Password_Include_One_Number = "[A-Z]{1, }[A-Za-z]{8, }[0-9]{1}$";
+        public const string Password_Special_Char = "[A-Z]{1}[0-9]{1}[!@#$%^&.]{1}[A-Za-z]{5, }$";
         public bool ValidFirstName(string name)
         {
             if (Regex.IsMatch(name, Name_Pattern)) ;
@@ -63,6 +64,14 @@ namespace UserValidationProblem
             if (Regex.IsMatch(password, Password_Include_One_Number)) ;
             {
                 Console.WriteLine("valid  password include one number" + password);
+                return true;
+            }
+        }
+        public bool ValidPassword_Special_Char(string password)
+        {
+            if (Regex.IsMatch(password, Password_Special_Char)) ;
+            {
+                Console.WriteLine("valid  password include special character" + password);
                 return true;
             }
         }
